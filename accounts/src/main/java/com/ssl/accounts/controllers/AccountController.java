@@ -65,7 +65,7 @@ public class AccountController {
         if(isDeleted) {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(new ResponseDTO(AccountConstants.STATUS_200, AccountConstants.STATUS_200));
+                    .body(new ResponseDTO(AccountConstants.STATUS_200, AccountConstants.MESSAGE_200));
         }
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
