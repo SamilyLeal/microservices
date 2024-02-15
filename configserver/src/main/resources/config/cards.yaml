@@ -1,0 +1,14 @@
+spring:
+  config:
+    import:
+      - "cards-prod.yaml"
+      - "cards-qa.yaml"
+
+build:
+  version: 3.0
+
+cards:
+  message: "Welcome to cards related to local APIs"
+  contactDetails:
+    name: "Whale"
+    email: "whale@gmail.com"

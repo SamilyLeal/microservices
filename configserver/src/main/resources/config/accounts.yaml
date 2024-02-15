@@ -1,0 +1,14 @@
+spring:
+  config:
+    import:
+      - "application-qa.yaml"
+      - "application-prod.yaml"
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to accounts related local APIs!"
+  contactDetails:
+    name: "Salami"
+    email: "salami@gmail.com"

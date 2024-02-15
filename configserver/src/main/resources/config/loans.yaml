@@ -1,0 +1,14 @@
+spring:
+  config:
+    import:
+      - "loans-prod.yaml"
+      - "loans-qa.yaml"
+
+build:
+  version: 3.0
+
+cards:
+  message: "Welcome to loans related to local APIs"
+  contactDetails:
+    name: "Crab"
+    email: "crab@gmail.com"

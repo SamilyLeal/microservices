@@ -1,11 +1,15 @@
 package com.ssl.cards.controllers;
 
+import com.ssl.cards.dto.AccountsContactInfoDTO;
 import com.ssl.cards.dto.CardDTO;
 import com.ssl.cards.dto.ResponseDTO;
 import com.ssl.cards.services.CardService;
 import com.ssl.cards.utils.CardConstants;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +19,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
+@EnableConfigurationProperties(AccountsContactInfoDTO.class)
 public class CardController {
     private final CardService cardService;
+
+    @Autowired
+    private AccountsContactInfoDTO accountsContactInfoDTO;
+
+    @Value("${build.version}")
+    private String buildVersion;
 
     public CardController(CardService cardService) {
         this.cardService = cardService;
@@ -65,5 +76,15 @@ public class CardController {
 
         return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
                 .body(new ResponseDTO(CardConstants.STATUS_417, CardConstants.MESSAGE_417_DELETE));
+    }
+
+    @GetMapping("/build-version")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+    }
+
+    @GetMapping("/accounts-contact")
+    public ResponseEntity<AccountsContactInfoDTO> getAccountsContact() {
+        return ResponseEntity.status(HttpStatus.OK).body(accountsContactInfoDTO);
     }
 }

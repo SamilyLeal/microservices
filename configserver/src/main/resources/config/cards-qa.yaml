@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: 2.0
+
+cards:
+  message: "Welcome to cards related to qa APIs"
+  contactDetails:
+    name: "Beluga"
+    email: "beluga@gmail.com"

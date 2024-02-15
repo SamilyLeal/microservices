@@ -1,11 +1,15 @@
 package com.ssl.loans.controllers;
 
+import com.ssl.loans.dto.AccountsContactInfoDTO;
 import com.ssl.loans.dto.LoanDTO;
 import com.ssl.loans.dto.ResponseDTO;
 import com.ssl.loans.services.LoanService;
 import com.ssl.loans.utils.LoanConstants;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,8 +18,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @Validated
+@EnableConfigurationProperties(AccountsContactInfoDTO.class)
 public class LoanController {
     private final LoanService loanService;
+
+    @Autowired
+    private AccountsContactInfoDTO accountsContactInfoDTO;
+
+    @Value("${build.version}")
+    private String buildVersion;
 
     public LoanController(LoanService loanService) {
         this.loanService = loanService;
@@ -66,4 +77,15 @@ public class LoanController {
             );
         }
     }
+
+    @GetMapping("/build-version")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+    }
+
+    @GetMapping("/accounts-contact")
+    public ResponseEntity<AccountsContactInfoDTO> getAccountsContact() {
+        return ResponseEntity.status(HttpStatus.OK).body(accountsContactInfoDTO);
+    }
+
 }

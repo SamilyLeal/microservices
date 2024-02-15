@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: 1.0
+
+cards:
+  message: "Welcome to loans related to prod APIs"
+  contactDetails:
+    name: "Lobster"
+    email: "lobster@gmail.com"
