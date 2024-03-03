@@ -1,6 +1,6 @@
 package com.ssl.loans.controllers;
 
-import com.ssl.loans.dto.AccountsContactInfoDTO;
+import com.ssl.loans.dto.LoansContactInfoDTO;
 import com.ssl.loans.dto.LoanDTO;
 import com.ssl.loans.dto.ResponseDTO;
 import com.ssl.loans.services.LoanService;
@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @Validated
-@EnableConfigurationProperties(AccountsContactInfoDTO.class)
+@EnableConfigurationProperties(LoansContactInfoDTO.class)
 public class LoanController {
     private final LoanService loanService;
 
     @Autowired
-    private AccountsContactInfoDTO accountsContactInfoDTO;
+    private LoansContactInfoDTO loansContactInfoDTO;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -84,8 +84,8 @@ public class LoanController {
     }
 
     @GetMapping("/accounts-contact")
-    public ResponseEntity<AccountsContactInfoDTO> getAccountsContact() {
-        return ResponseEntity.status(HttpStatus.OK).body(accountsContactInfoDTO);
+    public ResponseEntity<LoansContactInfoDTO> getLoansContact() {
+        return ResponseEntity.status(HttpStatus.OK).body(loansContactInfoDTO);
     }
 
 }

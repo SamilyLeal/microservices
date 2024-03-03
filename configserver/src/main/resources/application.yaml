@@ -3,11 +3,33 @@ spring:
     name: "configserver"
   profiles:
     active: native
+    # active: git
   cloud:
     config:
       server:
         native:
           search-locations: "classpath:/config"
+          # search-locations: "file:///Users//OCTOPUS//Documents//config"
+        # git:
+          # url: "https://github.com/SamilyLeal/config.git"
+          # default-label: main
+          # timeout: 5
+          # clone-on-start: true
+          # force-pull: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,refresh"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+
+encrypt:
+  key: "54C9B4E79689F4861572B2FCGAC3A"
 
 server:
   port: 8071

@@ -10,4 +10,4 @@ accounts:
   message: "Welcome to accounts related qa APIs!"
   contactDetails:
     name: "Shrimp"
-    email: "shrimp@gmail.com"
+    email: "{cipher}e8803721472fa9a1124bb69bcb2e609031b894d6bb3c88bccd27160e513b42b86a5fb3c18eeee9cc7605f7fe2693e670"

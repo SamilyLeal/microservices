@@ -1,0 +1,53 @@
+services:
+
+  configserver:
+    image: "samilyleal/configserver:0.0.1-SNAPSHOT"
+    container_name: configserver-ms
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yaml
+      service: microservice-base-config
+
+  accounts:
+    image: "samilyleal/accounts:0.0.1-SNAPSHOT"
+    container_name: accounts-ms
+    ports:
+      - "7474:7474"
+    environment:
+      SPRING_APPLICATION_NAME: "accounts"
+    extends:
+      file: common-config.yaml
+      service: microservice-configserver-config
+
+  cards:
+    image: "samilyleal/cards:0.0.1-SNAPSHOT"
+    container_name: cards-ms
+    ports:
+      - "7484:7484"
+    environment:
+      SPRING_APPLICATION_NAME: "cards"
+    extends:
+      file: common-config.yaml
+      service: microservice-configserver-config
+
+  loans:
+    image: "samilyleal/loans:0.0.1-SNAPSHOT"
+    container_name: loans-ms
+    ports:
+      - "7494:7494"
+    environment:
+      SPRING_APPLICATION_NAME: "loans"
+    extends:
+      file: common-config.yaml
+      service: microservice-configserver-config
+
+networks:
+  ssl:
+    driver: "bridge"

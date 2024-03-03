@@ -1,6 +1,6 @@
 package com.ssl.cards.controllers;
 
-import com.ssl.cards.dto.AccountsContactInfoDTO;
+import com.ssl.cards.dto.CardsContactInfoDTO;
 import com.ssl.cards.dto.CardDTO;
 import com.ssl.cards.dto.ResponseDTO;
 import com.ssl.cards.services.CardService;
@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@EnableConfigurationProperties(AccountsContactInfoDTO.class)
+@EnableConfigurationProperties(CardsContactInfoDTO.class)
 public class CardController {
     private final CardService cardService;
 
     @Autowired
-    private AccountsContactInfoDTO accountsContactInfoDTO;
+    private CardsContactInfoDTO cardsContactInfoDTO;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -83,8 +83,8 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
     }
 
-    @GetMapping("/accounts-contact")
-    public ResponseEntity<AccountsContactInfoDTO> getAccountsContact() {
-        return ResponseEntity.status(HttpStatus.OK).body(accountsContactInfoDTO);
+    @GetMapping("/cards-contact")
+    public ResponseEntity<CardsContactInfoDTO> getCardsContact() {
+        return ResponseEntity.status(HttpStatus.OK).body(cardsContactInfoDTO);
     }
 }

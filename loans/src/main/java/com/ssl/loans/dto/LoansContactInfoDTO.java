@@ -1,11 +1,11 @@
-package com.ssl.accounts.dto;
+package com.ssl.loans.dto;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Map;
 
-@ConfigurationProperties(prefix = "accounts")
-public class AccountsContactInfoDTO {
+@ConfigurationProperties(prefix = "loans")
+public class LoansContactInfoDTO {
     private String message;
     private Map<String, String> contactDetails;
 
