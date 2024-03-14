@@ -34,7 +34,7 @@ public class CardController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> createCard(@RequestParam @Pattern(regexp = "\\d{10}", message = "Mobile number invalid  ss!")
+    public ResponseEntity<ResponseDTO> createCard(@RequestParam @Pattern(regexp = "\\d{10}", message = "Mobile number invalid!")
             String mobileNumber) {
         cardService.createCard(mobileNumber);
 
@@ -45,7 +45,7 @@ public class CardController {
 
     @GetMapping("/fetch")
     public ResponseEntity<CardDTO> fetchCardDetails(
-            @RequestParam @Valid @Pattern(regexp = "\\d{10}", message = "Phone number invalid!")
+            @RequestParam @Valid @Pattern(regexp = "\\d{10}", message = "Mobile number invalid!")
             String mobileNumber) {
         return ResponseEntity
                 .status(HttpStatus.OK)

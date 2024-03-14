@@ -20,7 +20,6 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalHandlerException extends ResponseEntityExceptionHandler {
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {

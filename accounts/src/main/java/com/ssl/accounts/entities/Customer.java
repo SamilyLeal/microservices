@@ -1,14 +1,12 @@
 package com.ssl.accounts.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "costumer")
 public class Customer extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "customer_id")
     private Long customerId;
     private String name;
     private String email;

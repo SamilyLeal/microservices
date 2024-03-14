@@ -48,13 +48,13 @@ public class AccountServiceImpl implements AccountService {
     private Account createNewAccount(Customer customer) {
         Account newAccount = new Account();
         newAccount.setCustomerId(customer.getCustomerId());
-        long randomAccountNumber = 1_000_000_000L + new Random().nextInt(900_000_000);
+        long randomAccountNumber = 1_000_000_000 + new Random().nextInt(900_000_000);
 
         newAccount.setAccountNumber(randomAccountNumber);
         newAccount.setAccountType(AccountConstants.SAVING);
         newAccount.setBranchAddress("Street uwu");
-        newAccount.setCreatedAt(LocalDateTime.now());
         newAccount.setCreatedBy("salami");
+        newAccount.setCreatedAt(LocalDateTime.now());
 
         return newAccount;
     }
@@ -76,7 +76,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Boolean updateAccount(CustomerDTO customerDTO) {
+    public boolean updateAccount(CustomerDTO customerDTO) {
         boolean isUpdated = false;
         AccountDTO accountDTO = customerDTO.getAccountDTO();
 
@@ -105,7 +105,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Boolean deleteAccount(String mobileNumber) {
+    public boolean deleteAccount(String mobileNumber) {
         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 () -> new ResourceNotFound("Customer", "mobile number", mobileNumber)
         );

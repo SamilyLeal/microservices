@@ -2,19 +2,27 @@ package com.ssl.accounts.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class BaseEntity {
-    @Column(name = "created_at",updatable = false) // column not included in updates
+    @CreatedDate
+    @Column(updatable = false) // column not included in updates
     private LocalDateTime createdAt;
-    @Column(name = "created_by", updatable = false)
+    @CreatedBy
+    @Column(updatable = false)
     private String createdBy;
-    @Column(name = "update_at", insertable = false) // column not included in inserts
-    private LocalDateTime updateAt;
-    @Column(name = "update_by", insertable = false)
-    private String updateBy;
+    @LastModifiedDate
+    @Column(insertable = false) // column not included in inserts
+    private LocalDateTime updatedAt;
+    @LastModifiedBy
+    @Column(insertable = false)
+    private String updatedBy;
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -32,20 +40,20 @@ public class BaseEntity {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getUpdateAt() {
-        return updateAt;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public String getUpdateBy() {
-        return updateBy;
+    public String getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
     @Override
@@ -53,8 +61,8 @@ public class BaseEntity {
         return "BaseEntity{" +
                 "createdAt=" + createdAt +
                 ", createdBy='" + createdBy + '\'' +
-                ", updateAt=" + updateAt +
-                ", updateBy='" + updateBy + '\'' +
+                ", updateAt=" + updatedAt +
+                ", updateBy='" + updatedBy + '\'' +
                 '}';
     }
 }
