@@ -6,7 +6,7 @@ spring:
 build:
   version: 1.0
 
-cards:
+loans:
   message: "Welcome to loans related to prod APIs"
   contactDetails:
     name: "Lobster"

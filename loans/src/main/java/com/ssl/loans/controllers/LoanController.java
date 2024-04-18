@@ -81,7 +81,7 @@ public class LoanController {
         return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
     }
 
-    @GetMapping("/accounts-contact")
+    @GetMapping("/loans-contact")
     public ResponseEntity<LoansContactInfoDTO> getLoansContact() {
         return ResponseEntity.status(HttpStatus.OK).body(loansContactInfoDTO);
     }

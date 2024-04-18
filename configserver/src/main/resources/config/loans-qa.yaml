@@ -6,7 +6,7 @@ spring:
 build:
   version: 2.0
 
-cards:
+loans:
   message: "Welcome to loans related to qa APIs"
   contactDetails:
     name: "Tuna"

@@ -7,7 +7,7 @@ spring:
 build:
   version: 3.0
 
-cards:
+loans:
   message: "Welcome to loans related to local APIs"
   contactDetails:
     name: "Crab"
