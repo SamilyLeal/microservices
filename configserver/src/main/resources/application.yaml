@@ -27,6 +27,10 @@ management:
       enabled: true
     liveness-state:
       enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
 
 encrypt:
   key: "54C9B4E79689F4861572B2FCGAC3A"
