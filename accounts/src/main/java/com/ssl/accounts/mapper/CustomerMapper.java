@@ -1,6 +1,7 @@
 package com.ssl.accounts.mapper;
 
 import com.ssl.accounts.dto.CustomerDTO;
+import com.ssl.accounts.dto.CustomerDetailsDTO;
 import com.ssl.accounts.entities.Customer;
 
 public class CustomerMapper {
@@ -13,6 +14,14 @@ public class CustomerMapper {
         customerDTO.setMobileNumber(customer.getMobileNumber());
 
         return customerDTO;
+    }
+
+    public static CustomerDetailsDTO toCustomerDetailsDto(Customer customer, CustomerDetailsDTO customerDetailsDTO) {
+        customerDetailsDTO.setName(customer.getName());
+        customerDetailsDTO.setEmail(customer.getEmail());
+        customerDetailsDTO.setMobileNumber(customer.getMobileNumber());
+
+        return customerDetailsDTO;
     }
 
     public static Customer toCustomer(CustomerDTO customerDTO, Customer customer) {
